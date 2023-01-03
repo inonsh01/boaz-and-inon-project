@@ -8,12 +8,13 @@ export default function Login() {
     const [userName, setUserName] = useState("Bret");
     const [password, setPassword] = useState("3874");
 
-    function checkUser(users) {
+function checkUser(users) {
         for (let user of users) {
             if (user.username === userName) {
                 let usPassword = user.address.zipcode.split("-")[1];
                 if (password === usPassword) {
-                    navigate("/user page");
+                    localStorage.setItem("currentUser", [user.username, user.id]);
+                    navigate(`/user page/${user.name}`);
                     return;
                 }
             }
