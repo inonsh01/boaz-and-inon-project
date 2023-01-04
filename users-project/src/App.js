@@ -17,9 +17,9 @@ function App() {
       <Route path='/' element={<HomePage />} />
       <Route path='/login' element={<Login />} />
       <Route path='/user page/:name' element={<UserPage />} />
-      <Route path='/todos' element={<Todos />} />
-      <Route path='/posts' element={<Posts />} />
-      <Route path='/photos' element={<Photos />} />
+      <Route path='/user page/:name/todos' element={<Todos />} />
+      <Route path='/user page/:name/posts' element={<Posts />} />
+      <Route path='/user page/:name/albums' element={<Photos />} />
       <Route path='*' element={<ErrorPage />} />
     </Routes>
     </UserProvider>
