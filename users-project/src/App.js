@@ -3,8 +3,10 @@ import Login from './components/login';
 import ErrorPage from './components/errorPage'
 import HomePage from './components/homePage'
 import UserPage from './components/userPage'
-
+import { createContext } from "react";
 import { Routes, Route } from 'react-router-dom';
+
+const UserContext = createContext();
 
 function App() {
   return (
