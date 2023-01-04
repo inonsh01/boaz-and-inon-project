@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import "../style/login.css"
 import { IdContext } from './../components/userContext';
+import '../style/login.css'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function Login() {
     }
 
     function handleSubmit(event) {
-        //setInterval(()=>console.log("wait..."),1000)
         event.preventDefault();
         fetch("https://jsonplaceholder.typicode.com/users")
             .then((response) => response.json())

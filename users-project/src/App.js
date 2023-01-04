@@ -6,25 +6,31 @@ import UserPage from './components/userPage'
 import Todos from './components/Todos';
 import Shared from './components/Shared';
 import Posts from './components/Posts';
-import Photos from './components/Photos';
+import Photos from './components/Albums';
+import Picture from './components/Picture';
 import { UserProvider } from './components/userContext';
+import { AlbumProvider } from './components/AlbumsContext';
 import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
     <UserProvider>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/users/:name' element={<Shared />}>
-          <Route index element = {<UserPage />}/>
-          <Route path='todos' element={<Todos />} />
-          <Route path='posts' element={<Posts  />} />
-          <Route path='albums' element={<Photos />} />
-        </Route>
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
+      <AlbumProvider>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/users/:name' element={<Shared />}>
+            <Route index element={<UserPage />} />
+            <Route path='todos' element={<Todos />} />
+            <Route path='posts' element={<Posts />} />
+            <Route path='albums' element={<Photos />} >
+              <Route path='picture' element={<Picture />} />
+            </Route>
+          </Route>
+          <Route path='*' element={<ErrorPage />} />
+        </Routes>
+      </AlbumProvider>
     </UserProvider>
   )
 }

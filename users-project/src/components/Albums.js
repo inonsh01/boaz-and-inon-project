@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { IdContext } from './../components/userContext';
+import { Link, Outlet } from 'react-router-dom'
+import { AlbumContext } from './AlbumsContext';
+import { IdContext } from './userContext';
+
 
 function Photos() {
     const getId = useContext(IdContext)
     const [albumsList, setAlbumsList] = useState([])
+    const [bool, setBool] = useState(false)
+    const dataToPicture = 0;
+    const getAlbum = useContext(AlbumContext)
+
+
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/albums?userId=${getId.myId}`)
@@ -18,12 +26,20 @@ function Photos() {
             })
     }, []);
 
+    const changeContextValue = (index) => {
+        getAlbum.changeAlbum(index)
+    }
     return (<>
+
         <div className="talboms">
             <ul>{albumsList.map((item, index) =>
-                <li key={index}> {item} </li>)}
+                <li key={index}>
+                    <Link onClick={()=>changeContextValue(index)}
+                     to="picture">{item}</Link>
+                </li>)}
             </ul>
         </div>
+        <Outlet/>
     </>
     )
 }

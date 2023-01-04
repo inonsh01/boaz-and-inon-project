@@ -67,6 +67,7 @@ export default function UserPage() {
       <ul className='info'>
         {infoText.map((element, index) => <li className={`li${index + 1}`} key={index}> {element} </li>)}
       </ul>
+      <Outlet/>
     </div>
   )
 }
