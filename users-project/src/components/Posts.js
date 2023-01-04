@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom'
 import { IdContext } from './../components/userContext';
 
 function Posts() {
     const getId = useContext(IdContext)
     const [postList, setPostList] = useState([])
-    const [bool, setBool] = useState(false)
-
 
 
     useEffect(() => {
@@ -21,21 +18,11 @@ function Posts() {
             })
     }, []);
 
-
-
-
-    const showMyPostsList = () => {
-        bool ? setBool(false) : setBool(true)
-    }
     return (<>
-        <div>
-            <button onClick={() => showMyPostsList()}>Show my posts</button>
-        </div>
         <div className="todo">
-            {bool ? <ul>{postList.map((item, index) =>
+            <ul>{postList.map((item, index) =>
                 <li key={index}> {item} </li>)}
-            </ul> :
-                <p>press on the button to see your posts</p>}
+            </ul>
         </div>
     </>
     )
