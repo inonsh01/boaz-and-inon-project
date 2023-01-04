@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { IdContext } from './../components/userContext';
 
 export default function UserPage() {
   const { name } = useParams();
   const navigate = useNavigate();
   const [infoText, setInfoText] = useState([]);
+  const getId = useContext(IdContext);
 
   async function getUser() {
-    let userDetails;
-    const id = parseInt(localStorage.getItem('currentUser').split(',')[1]);
-    let res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const id = parseInt(getId.myId);
+    let res = await fetch(`https://jsonplaceholder.typicode.com/users/?id=${id}`);
     res = await res.json();
-    for (let user of res) {
-      if (user.id === id) {
-        userDetails = user;
-      }
-    }
-    return userDetails;
+    return res[0];
   }
 
   function info() {
