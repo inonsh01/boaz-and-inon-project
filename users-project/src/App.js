@@ -16,7 +16,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/user page' element={<UserPage />} />
+      <Route path='/user page/:name' element={<UserPage />} />
       <Route path='/todos' element={<Todos />} />
       <Route path='/posts' element={<Posts />} />
       <Route path='/photos' element={<Photos />} />
