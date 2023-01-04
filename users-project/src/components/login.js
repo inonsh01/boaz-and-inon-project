@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { IdContext } from './../components/userContext';
-
-
+import '../style/login.css'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -17,8 +16,8 @@ export default function Login() {
                 let usPassword = user.address.zipcode.split("-")[1];
                 if (password === usPassword) {
                     getId.changeId(user.id)
-                    localStorage.setItem("currentUser", [user.username, user.id]);
-                    navigate(`/user page/${user.name}`);
+                    localStorage.setItem("currentUser", user.username);
+                    navigate(`/users/${user.name}`);
                     return;
                 }
             }
@@ -31,6 +30,7 @@ export default function Login() {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then((response) => response.json())
             .then((data) => {
+                console.log("some");
                 checkUser(data);
             })
     }

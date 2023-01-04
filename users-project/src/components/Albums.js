@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, Outlet } from 'react-router-dom'
-import { AlbumContext } from './../components/AlbumsContext';
-import { IdContext } from './../components/userContext';
+import { AlbumContext } from './AlbumsContext';
+import { IdContext } from './userContext';
 
 
 function Photos() {
@@ -29,14 +29,7 @@ function Photos() {
     const changeContextValue = (index) => {
         getAlbum.changeAlbum(index)
     }
-
-    // const showMyPostsList = () => {
-    //     bool ? setBool(false) : setBool(true)
-    // }
     return (<>
-        {/* <div>
-            <button onClick={() => showMyPostsList()}>Show my alboms</button>
-        </div> */}
 
         <div className="talboms">
             <ul>{albumsList.map((item, index) =>

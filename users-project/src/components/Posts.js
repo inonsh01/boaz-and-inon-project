@@ -36,13 +36,13 @@ function Posts() {
                 }
                 setCommentsList(myList)
             })
-            showMyPostsList(index)
+        showMyPostsList(index)
     }
-   
+
     const focusInput = () => {
         console.log("hi")
         posText.current.focus();
-      };    
+    };
 
     const showMyPostsList = (index) => {
         let bollArr = [...bool]
@@ -50,21 +50,21 @@ function Posts() {
         setBool(bollArr);
     }
     return (<>
-        
+
         <div className="todo">
             {<ul>{postList.map((item, index) =>
                 <li key={index} ref={posText}
-                 onClick={()=>focusInput()}>
-                     {item}
-                <button onClick={()=> (showComments(index))}
-                 >Show comments</button>
-                 
-                 <div>{bool[index] ? <div>{commentsList.map((comment, index)=>
-                 <p key={index}><br/>{comment}</p>
-                 )}</div> : <p></p> }</div> 
-                  </li>)
-                  } 
-            </ul> }
+                    onClick={() => focusInput()}>
+                    {item}
+                    <button onClick={() => (showComments(index))}
+                    >Show comments</button>
+
+                    <div>{bool[index] ? <div>{commentsList.map((comment, index) =>
+                        <p key={index}><br />{comment}</p>
+                    )}</div> : <p></p>}</div>
+                </li>)
+            }
+            </ul>}
         </div>
     </>
     )

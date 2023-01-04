@@ -28,24 +28,20 @@ function Todos(params) {
         bool ? setBool(false) : setBool(true)
     }
 
-    const changeIfComlitedStatus = ( index)=> {
+    const changeIfComlitedStatus = (index) => {
         let arr = [...ifComlited];
         arr[index] ? (arr[index] = false) : (arr[index] = true)
         setIfComlited(arr);
     }
     return (<>
-        <div>
-            <button onClick={() => showMyTodosList()}>Show my todos</button>
-        </div>
         <div className="todo">
-            {bool ? <ul>{toDoList.map((item, index) =>
+            <ul>{toDoList.map((item, index) =>
                 <li key={index}> {item}
                     <input
                         type="checkbox" id="myCheck" checked={ifComlited[index]}
-                        onClick={() =>changeIfComlitedStatus( index)}>
+                        onClick={() => changeIfComlitedStatus(index)}>
                     </input></li>)}
-            </ul> :
-                <p>press on the button to see your todos</p>}
+            </ul>
         </div>
     </>
     )

@@ -4,8 +4,9 @@ import ErrorPage from './components/errorPage'
 import HomePage from './components/homePage'
 import UserPage from './components/userPage'
 import Todos from './components/Todos';
+import Shared from './components/Shared';
 import Posts from './components/Posts';
-import Photos from './components/Photos';
+import Photos from './components/Albums';
 import Picture from './components/Picture';
 import { UserProvider } from './components/userContext';
 import { AlbumProvider } from './components/AlbumsContext';
@@ -19,7 +20,8 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/user page/:name' element={<UserPage />}>
+          <Route path='/users/:name' element={<Shared />}>
+            <Route index element={<UserPage />} />
             <Route path='todos' element={<Todos />} />
             <Route path='posts' element={<Posts />} />
             <Route path='albums' element={<Photos />} >
