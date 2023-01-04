@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { useNavigate } from "react-router-dom";
-
 import "../style/login.css"
+import { IdContext } from './../components/userContext';
+
+
 
 export default function Login() {
     const navigate = useNavigate();
     const [userName, setUserName] = useState("Bret");
     const [password, setPassword] = useState("3874");
 
+    const getId = useContext(IdContext)
+
     function checkUser(users) {
         for (let user of users) {
             if (user.username === userName) {
                 let usPassword = user.address.zipcode.split("-")[1];
                 if (password === usPassword) {
+                    getId.changeId(user.id)
                     navigate("/user page");
                     return;
                 }
