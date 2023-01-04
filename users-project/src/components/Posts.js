@@ -7,7 +7,8 @@ function Posts() {
     const [postList, setPostList] = useState([])
     const [commentsList, setCommentsList] = useState([])
     const [bool, setBool] = useState([])
-    const posText = useRef()
+    const [idList, setIdList] = useState([])
+
 
 
     useEffect(() => {
@@ -16,33 +17,40 @@ function Posts() {
             .then((data) => {
                 let myList = []
                 let boolArr = []
-                let commentArr = []
+                let commentArr = [...commentsList]
+                let postArr = []
                 for (let i = 0; i < data.length; i++) {
                     myList.push(data[i].body)
+                    postArr.push(data[i].id)
                     boolArr.push(false)
+                    commentArr.push([])
                 }
+                setIdList(postArr)
                 setPostList(myList)
                 setBool(boolArr)
+                setCommentsList(commentArr)
             })
     }, []);
 
-    const showComments = (index) => {
-        fetch(`https://jsonplaceholder.typicode.com/comments/?postId=${index}`)
+    const showComments = (index) =>{
+            fetch(`https://jsonplaceholder.typicode.com/comments/?postId=${idList[index]}`)
             .then((response) => response.json())
             .then((data) => {
                 let myList = [...commentsList]
-                for (let i = 0; i < data.length; i++) {
-                    myList.push(data[i].body)
+                for (let j = 0; j < data.length; j++) {
+                    myList[index].push(data[j].body);  
                 }
-                setCommentsList(myList)
-            })
-        showMyPostsList(index)
+            setCommentsList(myList)
+            })  
+            showMyPostsList(index)
     }
 
-    const focusInput = () => {
-        console.log("hi")
-        posText.current.focus();
-    };
+    
+
+    // const focusIn = () => {
+    //     posText.current.style.color = "red"
+    //     // console.log("hi miri");
+    // };
 
     const showMyPostsList = (index) => {
         let bollArr = [...bool]
@@ -53,14 +61,16 @@ function Posts() {
 
         <div className="todo">
             {<ul>{postList.map((item, index) =>
-                <li key={index} ref={posText}
-                    onClick={() => focusInput()}>
+                <li key={index}
+                //  ref={posText}
+                    // onClick={() => focusIn()}
+                    >
                     {item}
                     <button onClick={() => (showComments(index))}
                     >Show comments</button>
 
-                    <div>{bool[index] ? <div>{commentsList.map((comment, index) =>
-                        <p key={index}><br />{comment}</p>
+                    <div>{bool[index] ? <div>{commentsList[index].map((comment, i) =>
+                        <p key={i}><br />{comment}</p>
                     )}</div> : <p></p>}</div>
                 </li>)
             }
