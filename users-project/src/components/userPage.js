@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, Outlet } from 'react-router-dom';
 import { IdContext } from './../components/userContext';
 
 export default function UserPage() {
@@ -61,7 +61,9 @@ export default function UserPage() {
       </div>
       <ul>
         {infoText.map((element, index) => <li key={index}> {element} </li>)}
+        
       </ul>
+      <Outlet/>
     </div>
   )
 }

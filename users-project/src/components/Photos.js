@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
+import { AlbumContext } from './../components/AlbumsContext';
 import { IdContext } from './../components/userContext';
+
 
 function Photos() {
     const getId = useContext(IdContext)
     const [albumsList, setAlbumsList] = useState([])
     const [bool, setBool] = useState(false)
+    const dataToPicture = 0;
+    const getAlbum = useContext(AlbumContext)
 
 
 
@@ -22,22 +26,27 @@ function Photos() {
             })
     }, []);
 
-
-
-
-    const showMyPostsList = () => {
-        bool ? setBool(false) : setBool(true)
+    const changeContextValue = (index) => {
+        getAlbum.changeAlbum(index)
     }
+
+    // const showMyPostsList = () => {
+    //     bool ? setBool(false) : setBool(true)
+    // }
     return (<>
-        <div>
+        {/* <div>
             <button onClick={() => showMyPostsList()}>Show my alboms</button>
-        </div>
+        </div> */}
+
         <div className="talboms">
-            {bool ? <ul>{albumsList.map((item, index) =>
-                <li key={index}> {item} </li>)}
-            </ul> :
-                <p>press on the button to see your alboms</p>}
+            <ul>{albumsList.map((item, index) =>
+                <li key={index}>
+                    <Link onClick={()=>changeContextValue(index)}
+                     to="picture">{item}</Link>
+                </li>)}
+            </ul>
         </div>
+        <Outlet/>
     </>
     )
 }

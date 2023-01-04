@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import "../style/login.css"
 import { IdContext } from './../components/userContext';
 
 
