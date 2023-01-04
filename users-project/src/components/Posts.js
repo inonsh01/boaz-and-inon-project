@@ -26,10 +26,11 @@ function Posts() {
     }, []);
 
     const showComments = (index) => {
-        fetch(`https://jsonplaceholder.typicode.com/comments/?postId=${index}`)
+        fetch(`https://jsonplaceholder.typicode.com/comments/?postId=${index+1}`)
             .then((response) => response.json())
             .then((data) => {
-                let myList = [...commentsList]
+                console.log(data);
+                let myList = []
                 for (let i = 0; i < data.length; i++) {
                     myList.push(data[i].body)
                 }

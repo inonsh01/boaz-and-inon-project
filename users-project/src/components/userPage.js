@@ -1,14 +1,20 @@
-import React, { useState, useContext } from 'react';
-import { useParams, useNavigate, Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
 import { IdContext } from './../components/userContext';
 import '../style/userPage.css';
 
 export default function UserPage() {
-  const { name } = useParams();
   const navigate = useNavigate();
   const [infoText, setInfoText] = useState([]);
   const [isInfo, setIsInfo] = useState(false);
   const getId = useContext(IdContext);
+
+  useEffect(() => {
+    if (!localStorage.getItem('currentUser')) {
+      alert("you need to login you shit!");
+      navigate("/login");
+    }
+  })
 
   async function getUser() {
     const id = parseInt(getId.myId);
@@ -67,7 +73,7 @@ export default function UserPage() {
       <ul className='info'>
         {infoText.map((element, index) => <li className={`li${index + 1}`} key={index}> {element} </li>)}
       </ul>
-      <Outlet/>
+      <Outlet />
     </div>
   )
 }

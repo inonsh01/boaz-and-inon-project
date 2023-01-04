@@ -4,6 +4,9 @@ import { IdContext } from './../components/userContext';
 import '../style/login.css'
 
 export default function Login() {
+    if (localStorage.getItem('currentUser')) {
+        localStorage.removeItem('currentUser')
+    }
     const navigate = useNavigate();
     const [userName, setUserName] = useState("Bret");
     const [password, setPassword] = useState("3874");
@@ -30,7 +33,6 @@ export default function Login() {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then((response) => response.json())
             .then((data) => {
-                console.log("some");
                 checkUser(data);
             })
     }

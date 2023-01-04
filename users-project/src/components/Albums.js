@@ -7,8 +7,6 @@ import { IdContext } from './userContext';
 function Photos() {
     const getId = useContext(IdContext)
     const [albumsList, setAlbumsList] = useState([])
-    const [bool, setBool] = useState(false)
-    const dataToPicture = 0;
     const getAlbum = useContext(AlbumContext)
 
 
