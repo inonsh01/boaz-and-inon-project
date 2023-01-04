@@ -14,8 +14,8 @@
   
   /* For the white box of the form */
   .formbox {
-    width: 380px;
-    height: 480px;
+    width: 30vw;
+    height: 90vh;
     position: relative;
     margin: 6% auto;
     margin-top: 2%;
@@ -23,8 +23,9 @@
     padding: 5px;
     overflow: hidden;
   }
+
   .button-box {
-    width: 210px;
+    width: 15vw;
     margin: 35px auto;
     position: relative;
     box-shadow: 0 0 20px 9px #ff61241f;
