@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Outlet } from 'react-router-dom'
 import { AlbumContext } from './../components/AlbumsContext';
 
 

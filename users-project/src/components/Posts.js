@@ -16,6 +16,7 @@ function Posts() {
             .then((data) => {
                 let myList = []
                 let boolArr = []
+                let commentArr = []
                 for (let i = 0; i < data.length; i++) {
                     myList.push(data[i].body)
                     boolArr.push(false)
