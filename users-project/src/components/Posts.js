@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from 'react-router-dom'
 import { IdContext } from './../components/userContext';
+import "../style/posts.css"
+
 
 function Posts() {
     const getId = useContext(IdContext)
@@ -45,26 +47,15 @@ function Posts() {
             showMyPostsList(index)
     }
 
-    
-
-    // const focusIn = () => {
-    //     posText.current.style.color = "red"
-    //     // console.log("hi miri");
-    // };
-
     const showMyPostsList = (index) => {
         let bollArr = [...bool]
         bollArr[index] ? bollArr[index] = false : bollArr[index] = true;
         setBool(bollArr);
     }
-    return (<>
-
-        <div className="todo">
+    return (<div className="todo">
+        <div >
             {<ul>{postList.map((item, index) =>
-                <li key={index}
-                //  ref={posText}
-                    // onClick={() => focusIn()}
-                    >
+                <li className="post" key={index}>
                     {item}
                     <button onClick={() => (showComments(index))}
                     >Show comments</button>
@@ -76,7 +67,7 @@ function Posts() {
             }
             </ul>}
         </div>
-    </>
+    </div>
     )
 }
 

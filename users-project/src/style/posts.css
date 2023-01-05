@@ -1,0 +1,13 @@
+.todo{
+    border: 1px solid black;
+    display: flex;
+  flex-wrap: wrap;
+  background-color: DodgerBlue;
+}
+.post{
+    background-color: aqua;
+    width: 25vw;
+    height: auto;
+    padding: 10px;
+    margin: 15px;
+}
