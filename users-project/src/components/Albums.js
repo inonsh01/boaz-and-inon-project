@@ -28,7 +28,7 @@ function Photos() {
         getAlbum.changeAlbum(index)
     }
     return (<>
-
+    
         <div className="talboms">
             <ul>{albumsList.map((item, index) =>
                 <li key={index}>

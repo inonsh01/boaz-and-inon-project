@@ -22,7 +22,7 @@ function Picture(params) {
         <>
         <div>
             {picture.map((pic, index) => 
-            <img key={index} src={picture[index]}alt="picture"/>
+            <img key={index} src={picture[index]} alt="myPicture"/>
             )}
         </div>
         </>
