@@ -1,0 +1,23 @@
+.picsArea{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.pics{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.picsArea img{
+    width: 21vw;
+    height: 30vh;
+    margin: 10px;
+}
+.picsArea button{
+    width: 10vw;
+    height: 6vh;
+}

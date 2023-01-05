@@ -25,7 +25,9 @@ function Photos() {
     }, []);
 
     const changeContextValue = (index) => {
-        getAlbum.changeAlbum(index)
+        getAlbum.changeAlbum(index + 1)
+        console.log("index", index);
+        console.log("getAlbum.Album1:", getAlbum.Album);
     }
     return (<>
     
